@@ -1,1 +1,221 @@
 
+{
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "Death",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 45533174,
+              "CONCEPT_NAME": "Brain death",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "G93.82",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "5-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4048809,
+              "CONCEPT_NAME": "Brainstem death",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "230802007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45567909,
+              "CONCEPT_NAME": "Continuing pregnancy after intrauterine death of one fetus or more, second trimester, fetus 1",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O31.22X1",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45563090,
+              "CONCEPT_NAME": "Continuing pregnancy after intrauterine death of one fetus or more, third trimester, fetus 1",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O31.23X1",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45592221,
+              "CONCEPT_NAME": "Continuing pregnancy after intrauterine death of one fetus or more, third trimester, fetus 2",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O31.23X2",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45548743,
+              "CONCEPT_NAME": "Continuing pregnancy after intrauterine death of one fetus or more, third trimester, not applicable or unspecified",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O31.23X0",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 432373,
+              "CONCEPT_NAME": "Continuing pregnancy after intrauterine death of one or more fetuses",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "199307003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40770949,
+              "CONCEPT_NAME": "End Stage Renal Disease (ESRD) Death Notification - OMB CMS form 2746",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "68359-9",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "Survey"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 75605,
+              "CONCEPT_NAME": "Fetal death, affecting management of mother",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "14022007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45548770,
+              "CONCEPT_NAME": "Maternal care for intrauterine death, fetus 1",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O36.4XX1",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45539156,
+              "CONCEPT_NAME": "Maternal care for intrauterine death, not applicable or unspecified",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "O36.4XX0",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "ICD10CM",
+              "CONCEPT_CLASS_ID": "7-char billing code"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 36203970,
+              "CONCEPT_NAME": "U.S. standard report of fetal death - recommended 2003 revision set",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "86346-4",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "Clinical Observation"
+            },
+            "includeDescendants": true
+          }
+        ]
+      }
+    }
+  ],
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "Death": {}
+      }
+    ],
+    "ObservationWindow": {
+      "PriorDays": 0,
+      "PostDays": 0
+    },
+    "PrimaryCriteriaLimit": {
+      "Type": "First"
+    }
+  },
+  "QualifiedLimit": {
+    "Type": "First"
+  },
+  "ExpressionLimit": {
+    "Type": "First"
+  },
+  "InclusionRules": [],
+  "CensoringCriteria": [],
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {},
+  "cdmVersionRange": ">=5.0.0"
+}
