@@ -1,0 +1,97 @@
+*** Creating cohortMethodData objects ***
+  |                                                                                       |   0%
+  Thread 1 returns error: "invalid name for slot of class “SQLiteConnection”: extended_types" when using argument(s): 
+  list(args = list(connectionDetails = list(dbms = "sql server", XXXXXXXXXXXXXXXXXXXX, extraSettings = "database=COVID_OMOP", oracleDriver = "thin"),
+  cdmDatabaseSchema = "dbo", oracleTempSchema = NULL, exposureDatabaseSchema = "results", exposureTable = "PosNegComparison20210126", 
+  outcomeDatabaseSchema = "results", outcomeTable = "PosNegComparison20210126", cdmVersion = 5, outcomeIds = c(122, 128, 129, 130, 255848, 261326, 443410), targetId = 110, n 
+  comparatorId = 141, restrictToCommonPeriod = FALSE, removeDuplicateSubjects = "keep all", maxCohortSize = 0, excludeDrugsFromCovariates = FALSE, 
+  covariateSettings = list(list(VisitCountMediumTerm = FALSE, ObservationShortTerm = TRUE, shortTermStartDays = -30, 
+  MeasurementRangeGroupShortTerm = FALSE, ConditionOccurrenceLongTerm = FALSE, DrugEraStartLongTerm = FALSE, VisitCountShortTerm = FALSE,
+  
+  
+  
+  
+  s2Vasc = TRUE, ConditionGroupEraStartLongTerm = FALSE, ConditionEraShortTerm = FALSE, Dcsi = TRUE, n        
+  DrugGroupEraLongTerm = TRUE, DrugGroupEraShortTerm = TRUE, ConditionEraStartLongTerm = FALSE, temporal = FALSE, 
+  DemographicsIndexMonth = TRUE, ConditionOccurrencePrimaryInpatientLongTerm = FALSE, ConditionEraAnyTimePrior = FALSE,
+  addDescendantsToInclude = FALSE, ConditionGroupEraStartMediumTerm = FALSE, ProcedureOccurrenceLongTerm = TRUE, 
+  DrugExposureLongTerm = FALSE, DrugEraStartShortTerm = FALSE, DistinctIngredientCountMediumTerm = FALSE, 
+  DistinctMeasurementCountShortTerm = FALSE, MeasurementRangeGroupLongTerm = TRUE, n        
+  ConditionGroupEraOverlapping = FALSE, MeasurementRangeGroupMediumTerm = FALSE, 
+  DrugGroupEraStartMediumTerm = FALSE, MeasurementAnyTimePrior = FALSE, MeasurementMediumTerm = FALSE, 
+  includedCovariateIds = list(), ConditionOccurrenceAnyTimePrior = FALSE, DistinctConditionCountLongTerm = FALSE, 
+  MeasurementValueLongTerm = FALSE, DrugEraShortTerm = FALSE, DrugGroupEraAnyTimePrior = FALSE, DrugEraOverlapping = FALSE,
+  ConditionOccurrencePrimaryInpatientAnyTimePrior = FALSE, ConditionEraMediumTerm = FALSE, n        
+  ConditionEraOverlapping = FALSE, ConditionEraStartShortTerm = FALSE, ObservationAnyTimePrior = FALSE, 
+  VisitConceptCountShortTerm = FALSE, DemographicsEthnicity = TRUE, DistinctIngredientCountLongTerm = FALSE, 
+  ConditionOccurrencePrimaryInpatientShortTerm = FALSE, DemographicsAgeGroup = TRUE, DistinctProcedureCountShortTerm = FALSE,
+  DistinctObservationCountMediumTerm = FALSE, includedCovariateConceptIds = list(), DrugGroupEraStartShortTerm = FALSE, 
+  addDescendantsToExclude = FALSE, DrugEraLongTerm = FALSE, n        
+  DistinctConditionCountShortTerm = FALSE,  ConditionGroupEraShortTerm = TRUE, ConditionEraStartMediumTerm = FALSE, 
+  VisitCountLongTerm = FALSE, DemographicsRace = TRUE, ProcedureOccurrenceAnyTimePrior = FALSE, 
+  DistinctObservationCountLongTerm = FALSE, ProcedureOccurrenceMediumTerm = FALSE, CharlsonIndex = TRUE, 
+  DemographicsPriorObservationTime = FALSE, MeasurementShortTerm = TRUE, DistinctProcedureCountMediumTerm = FALSE,
+  ConditionEraLongTerm = FALSE, DrugGroupEraStartLongTerm = FALSE, DemographicsGender = TRUE, n        
+  DeviceExposureAnyTimePrior = FALSE, ObservationLongTerm = TRUE, DemographicsIndexYearMonth = FALSE, 
+  ConditionOccurrenceMediumTerm = FALSE, longTermStartDays = -365, DemographicsAge = FALSE, DrugGroupEraOverlapping = TRUE, 
+  DistinctMeasurementCountLongTerm = FALSE, MeasurementRangeGroupAnyTimePrior = FALSE, DistinctConditionCountMediumTerm = FALSE, 
+  DrugGroupEraMediumTerm = FALSE, ProcedureOccurrenceShortTerm = TRUE, ObservationMediumTerm = FALSE, ConditionGroupEraAnyTimePrior = FALSE, Chads2 = TRUE, n       
+  DrugExposureAnyTimePrior = FALSE, DeviceExposureLongTerm = TRUE, DemographicsTimeInCohort = FALSE, DistinctMeasurementCountMediumTerm = FALSE, 
+  MeasurementValueShortTerm = FALSE, DeviceExposureMediumTerm = FALSE, ConditionGroupEraStartShortTerm = FALSE, 
+  ConditionOccurrencePrimaryInpatientMediumTerm = FALSE, MeasurementLongTerm = TRUE, DemographicsIndexYear = TRUE, 
+  MeasurementValueMediumTerm = FALSE, DrugEraStartMediumTerm = FALSE, MeasurementValueAnyTimePrior = FALSE, DistinctObservationCountShortTerm = FALSE, n       
+  DrugEraMediumTerm = FALSE, ConditionGroupEraLongTerm = TRUE, DrugExposureShortTerm = FALSE, DistinctIngredientCountShortTerm = FALSE, 
+  DeviceExposureShortTerm = TRUE, mediumTermStartDays = -180, DemographicsPostObservationTime = FALSE, VisitConceptCountLongTerm = FALSE, 
+  VisitConceptCountMediumTerm = FALSE, excludedCovariateConceptIds = list(), ConditionGroupEraMediumTerm = FALSE, DrugExposureMediumTerm = FALSE, 
+  DistinctProcedureCountLongTerm = FALSE, DrugEraAnyTimePrior = FALSE, endDays = 0, n       
+  ConditionOccurrenceShortTerm = FALSE)), studyStartDate = 20210304, washoutPeriod = 0, firstExposureOnly = FALSE, studyEndDate = 20210901), 
+  cohortMethodDataFile = "/home/idies/workspace/Storage/cli114/persistent/Studies/estimation7.7/PosNegComparison20210126/cmOutput/CmData_l1_t110_c141.zip")
+  
+  
+
+  |============================================                                           |  50%
+   Thread 2 returns error: "invalid name for slot of class “SQLiteConnection”: extended_types" when using argument(s): 
+   list(args = list(connectionDetails = list(dbms = "sql server", XXXXXXXXXXXXXXx extraSettings = "database=COVID_OMOP", oracleDriver = "thin"), 
+   cdmDatabaseSchema = "dbo", oracleTempSchema = NULL, exposureDatabaseSchema = "results", exposureTable = "PosNegComparison20210126", 
+   outcomeDatabaseSchema = "results", outcomeTable = "PosNegComparison20210126", cdmVersion = 5, 
+   outcomeIds = c(122, 128, 129, 130, 255848, 261326, 443410), targetId = 110, n    
+   comparatorId = 141, restrictToCommonPeriod = FALSE, removeDuplicateSubjects = "keep all", maxCohortSize = 0,
+   excludeDrugsFromCovariates = FALSE, covariateSettings = list(list(VisitCountMediumTerm = FALSE, ObservationShortTerm = TRUE, shortTermStartDays = -30, 
+   MeasurementRangeGroupShortTerm = FALSE, ConditionOccurrenceLongTerm = FALSE, DrugEraStartLongTerm = FALSE, VisitCountShortTerm = FALSE, Chads2Vasc = TRUE, 
+   ConditionGroupEraStartLongTerm = FALSE, ConditionEraShortTerm = FALSE, Dcsi = TRUE, n        
+   DrugGroupEraLongTerm = TRUE, DrugGroupEraShortTerm = TRUE, ConditionEraStartLongTerm = FALSE, temporal = FALSE, DemographicsIndexMonth = TRUE, 
+   ConditionOccurrencePrimaryInpatientLongTerm = FALSE, ConditionEraAnyTimePrior = FALSE, addDescendantsToInclude = FALSE, ConditionGroupEraStartMediumTerm = FALSE, 
+   ProcedureOccurrenceLongTerm = TRUE, DrugExposureLongTerm = FALSE, DrugEraStartShortTerm = FALSE, DistinctIngredientCountMediumTerm = FALSE,
+   DistinctMeasurementCountShortTerm = FALSE, MeasurementRangeGroupLongTerm = TRUE, n       
+   ConditionGroupEraOverlapping = FALSE, MeasurementRangeGroupMediumTerm = FALSE, DrugGroupEraStartMediumTerm = FALSE, 
+   MeasurementAnyTimePrior = FALSE, MeasurementMediumTerm = FALSE, includedCovariateIds = list(), 
+   ConditionOccurrenceAnyTimePrior = FALSE, DistinctConditionCountLongTerm = FALSE, MeasurementValueLongTerm = FALSE, DrugEraShortTerm = FALSE, 
+   DrugGroupEraAnyTimePrior = FALSE, DrugEraOverlapping = FALSE, ConditionOccurrencePrimaryInpatientAnyTimePrior = FALSE, ConditionEraMediumTerm = FALSE, n        
+   ConditionEraOverlapping = FALSE, ConditionEraStartShortTerm = FALSE, ObservationAnyTimePrior = FALSE, VisitConceptCountShortTerm = FALSE, 
+   DemographicsEthnicity = TRUE, DistinctIngredientCountLongTerm = FALSE, ConditionOccurrencePrimaryInpatientShortTerm = FALSE, 
+   DemographicsAgeGroup = TRUE, DistinctProcedureCountShortTerm = FALSE, DistinctObservationCountMediumTerm = FALSE, includedCovariateConceptIds = list(), 
+   DrugGroupEraStartShortTerm = FALSE, addDescendantsToExclude = FALSE, DrugEraLongTerm = FALSE, n        
+   DistinctConditionCountShortTerm = FALSE, ConditionGroupEraShortTerm = TRUE, ConditionEraStartMediumTerm = FALSE, VisitCountLongTerm = FALSE,
+   DemographicsRace = TRUE, ProcedureOccurrenceAnyTimePrior = FALSE, DistinctObservationCountLongTerm = FALSE, ProcedureOccurrenceMediumTerm = FALSE,
+   CharlsonIndex = TRUE, DemographicsPriorObservationTime = FALSE, MeasurementShortTerm = TRUE, DistinctProcedureCountMediumTerm = FALSE, 
+   ConditionEraLongTerm = FALSE, DrugGroupEraStartLongTerm = FALSE, DemographicsGender = TRUE, n       
+   DeviceExposureAnyTimePrior = FALSE, ObservationLongTerm = TRUE, DemographicsIndexYearMonth = FALSE, ConditionOccurrenceMediumTerm = FALSE, 
+   longTermStartDays = -365, DemographicsAge = FALSE, DrugGroupEraOverlapping = TRUE, DistinctMeasurementCountLongTerm = FALSE, 
+   MeasurementRangeGroupAnyTimePrior = FALSE, DistinctConditionCountMediumTerm = FALSE, DrugGroupEraMediumTerm = FALSE, ProcedureOccurrenceShortTerm = TRUE,
+   ObservationMediumTerm = FALSE, ConditionGroupEraAnyTimePrior = FALSE, Chads2 = TRUE, n        
+   DrugExposureAnyTimePrior = FALSE, DeviceExposureLongTerm = TRUE, DemographicsTimeInCohort = FALSE, DistinctMeasurementCountMediumTerm = FALSE,
+   MeasurementValueShortTerm = FALSE, DeviceExposureMediumTerm = FALSE, ConditionGroupEraStartShortTerm = FALSE, ConditionOccurrencePrimaryInpatientMediumTerm = FALSE, 
+   MeasurementLongTerm = TRUE, DemographicsIndexYear = TRUE, MeasurementValueMediumTerm = FALSE, DrugEraStartMediumTerm = FALSE, MeasurementValueAnyTimePrior = FALSE, 
+   DistinctObservationCountShortTerm = FALSE, n       
+   DrugEraMediumTerm = FALSE, ConditionGroupEraLongTerm = TRUE, DrugExposureShortTerm = FALSE, DistinctIngredientCountShortTerm = FALSE, DeviceExposureShortTerm = TRUE, 
+   mediumTermStartDays = -180, DemographicsPostObservationTime = FALSE, VisitConceptCountLongTerm = FALSE, VisitConceptCountMediumTerm = FALSE, excludedCovariateConceptIds = list(), 
+   ConditionGroupEraMediumTerm = FALSE, DrugExposureMediumTerm = FALSE, DistinctProcedureCountLongTerm = FALSE, DrugEraAnyTimePrior = FALSE, endDays = 0, n        
+   ConditionOccurrenceShortTerm = FALSE)), studyStartDate = 20200304, washoutPeriod = 0, firstExposureOnly = FALSE, studyEndDate = 20200904),
+   cohortMethodDataFile = "/home/idies/workspace/Storage/cli114/persistent/Studies/estimation7.7/PosNegComparison20210126/cmOutput/CmData_l2_t110_c141.zip")
+  |=======================================================================================| 100%
+Error in ParallelLogger::clusterApply(cluster, objectsToCreate, createCmDataObject) : 
+  Error(s) when calling function 'fun', see earlier messages for details
+In addition: Warning message:
+In execute(connectionDetails = connectionDetails, cdmDatabaseSchema = cdmDatabaseSchema,  :
+  fftempdir '/home/idies/workspace/Storage/cli114/persistent/Studies/estimation7.7FFtemp' not found. Attempting to create folder
+Warning: Could not find logger DEFAULT
