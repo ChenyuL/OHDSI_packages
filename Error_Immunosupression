@@ -1,0 +1,23 @@
+Computing covariate balance
+  |                                                                                                  |   0%Thread 3 returns error: "argument is of length zero" when using argument(s): list(analysisId = 1, targetId = 154, comparatorId = 155, outcomeId = 129, includedCovariateConceptIds = "", excludedCovariateConceptIds = "", outcomeOfInterest = TRUE, cohortMethodDataFile = "CmData_l1_t154_c155.zip", studyPopFile = "StudyPop_l1_s1_t154_c155_o129.rds", sharedPsFile = "Ps_l1_s1_p1_t154_c155.rds", psFile = "Ps_l1_s1_p1_t154_c155_o129.rds", strataFile = "StratPop_l1_s1_p1_t154_c155_s1_o129.rds", prefilteredCovariatesFile = "", outcomeModelFile = "Analysis_1/om_t154_c155_o129.rds"), /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/cmOutput, /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/balance
+  |========================                                                                          |  25%Thread 2 returns error: "argument is of length zero" when using argument(s): list(analysisId = 1, targetId = 154, comparatorId = 155, outcomeId = 128, includedCovariateConceptIds = "", excludedCovariateConceptIds = "", outcomeOfInterest = TRUE, cohortMethodDataFile = "CmData_l1_t154_c155.zip", studyPopFile = "StudyPop_l1_s1_t154_c155_o128.rds", sharedPsFile = "Ps_l1_s1_p1_t154_c155.rds", psFile = "Ps_l1_s1_p1_t154_c155_o128.rds", strataFile = "StratPop_l1_s1_p1_t154_c155_s1_o128.rds", prefilteredCovariatesFile = "", outcomeModelFile = "Analysis_1/om_t154_c155_o128.rds"), /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/cmOutput, /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/balance
+  |=================================================                                                 |  50%Thread 1 returns error: "argument is of length zero" when using argument(s): list(analysisId = 1, targetId = 154, comparatorId = 155, outcomeId = 122, includedCovariateConceptIds = "", excludedCovariateConceptIds = "", outcomeOfInterest = TRUE, cohortMethodDataFile = "CmData_l1_t154_c155.zip", studyPopFile = "StudyPop_l1_s1_t154_c155_o122.rds", sharedPsFile = "Ps_l1_s1_p1_t154_c155.rds", psFile = "Ps_l1_s1_p1_t154_c155_o122.rds", strataFile = "StratPop_l1_s1_p1_t154_c155_s1_o122.rds", prefilteredCovariatesFile = "", outcomeModelFile = "Analysis_1/om_t154_c155_o122.rds"), /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/cmOutput, /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/balance
+  |==========================================================================                        |  75%Thread 3 returns error: "argument is of length zero" when using argument(s): list(analysisId = 1, targetId = 154, comparatorId = 155, outcomeId = 130, includedCovariateConceptIds = "", excludedCovariateConceptIds = "", outcomeOfInterest = TRUE, cohortMethodDataFile = "CmData_l1_t154_c155.zip", studyPopFile = "StudyPop_l1_s1_t154_c155_o130.rds", sharedPsFile = "Ps_l1_s1_p1_t154_c155.rds", psFile = "Ps_l1_s1_p1_t154_c155_o130.rds", strataFile = "StratPop_l1_s1_p1_t154_c155_s1_o130.rds", prefilteredCovariatesFile = "", outcomeModelFile = "Analysis_1/om_t154_c155_o130.rds"), /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/cmOutput, /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/balance
+  |==================================================================================================| 100%
+Error in ParallelLogger::clusterApply(cluster, subset, computeCovariateBalance,  : 
+  Error(s) when calling function 'fun', see earlier messages for details
+Warning: Could not find logger DEFAULT
+> 
+> resultsZipFile <- file.path(outputFolder, "export", paste0("Results", databaseId, ".zip"))
+> dataFolder <- file.path(outputFolder, "shinyData")
+> 
+> prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder)
+Warning: error 1 in extracting from zip file
+Error in prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder) : 
+  Cannot find file database.csv in zip file
+> 
+> launchEvidenceExplorer(dataFolder = dataFolder, blind = TRUE, launch.browser = FALSE)
+Loading required package: shiny
+Error in unique(cohortMethodResult[, c("targetId", "comparatorId", "outcomeId")]) : 
+  object 'cohortMethodResult' not found
+Warning: Error 'cannot open the connection' when writing log to file ' /home/idies/workspace/Storage/cli114/persistent/Studies/Immunosupression/output/log.txt. Removing file appender from logger.
