@@ -1,0 +1,6 @@
+Creating exposure and outcome cohorts
+Connecting using SQL Server driver
+Warning: file("") only supports open = "w+" and open = "w+b": using the former
+Warning: text connection used with readChar(), results may be incorrect
+Error in readChar(pathToSql, file.info(pathToSql)$size) : 
+  invalid 'nchars' argument
