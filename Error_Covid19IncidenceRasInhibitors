@@ -1,0 +1,508 @@
+Thread:  4
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-09 06:51:43
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 6, height = 4.5, dpi = 400)
+1: Diagnostics.R#82: EmpiricalCalibration::plotCalibrationEffect(logRrNegative
+
+
+Thread:  2
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-09 06:51:43
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 6, height = 4.5, dpi = 400)
+1: Diagnostics.R#82: EmpiricalCalibration::plotCalibrationEffect(logRrNegative
+
+
+Thread:  1
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-09 06:51:43
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+
+Restarting R session...
+
+> library(Covid19IncidenceRasInhibitors)
+Loading required package: DatabaseConnector
+> getwd()
+[1] "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
+> library(Covid19IncidenceRasInhibitors)
+> 
+> # Maximum number of cores to be used:
+> maxCores <- parallel::detectCores()
+> 
+> # The folder where the study intermediate and result files will be written:
+> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
+> 
+> #load libraries
+> library(AzureKeyVault)
+> 
+> 
+> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
+Loading cached token
+> secretuser <- vault$secrets$get("ohdsi-shared")
+> secretpass <- vault$secrets$get("ohdsi-password")
+> 
+> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
+> 
+> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
+> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
+> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
+> 
+> 
+> 
+> # The name of the database schema and table where the study-specific cohorts will be instantiated:
+> cohortDatabaseSchema <- "cbo"
+> cohortTable <- "Covid19IncidenceRasinhibitors0208"
+> 
+> # Some meta-information that will be used by the export function:
+> databaseId <- "JH_CROWN"
+> databaseName <- "COVID_OMOP"
+> databaseDescription <- "20210208"
+> # For Oracle: define a schema that can be used to emulate temp tables:
+> oracleTempSchema <- NULL
+> 
+> execute(connectionDetails = connectionDetails,
++         cdmDatabaseSchema = cdmDatabaseSchema,
++         cohortDatabaseSchema = cohortDatabaseSchema,
++         cohortTable = cohortTable,
++         oracleTempSchema = oracleTempSchema,
++         outputFolder = outputFolder,
++         databaseId = databaseId,
++         databaseName = databaseName,
++         databaseDescription = databaseDescription,
++         createCohorts = TRUE,
++         synthesizePositiveControls = FALSE,
++         runAnalyses = TRUE,
++         runDiagnostics = TRUE,
++         packageResults = TRUE,
++         maxCores = maxCores)
+Creating exposure and outcome cohorts
+Connecting using SQL Server driver
+Error: Error executing SQL:
+com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "cbo" either does not exist or you do not have permission to use it.
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
+> library(Covid19IncidenceRasInhibitors)
+> 
+> # Maximum number of cores to be used:
+> maxCores <- parallel::detectCores()
+> 
+> # The folder where the study intermediate and result files will be written:
+> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
+> 
+> #load libraries
+> library(AzureKeyVault)
+> 
+> 
+> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
+Loading cached token
+> secretuser <- vault$secrets$get("ohdsi-shared")
+> secretpass <- vault$secrets$get("ohdsi-password")
+> 
+> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
+> 
+> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
+> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
+> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
+> 
+> 
+> 
+> # The name of the database schema and table where the study-specific cohorts will be instantiated:
+> cohortDatabaseSchema <- "dbo"
+> cohortTable <- "Covid19IncidenceRasinhibitors0208"
+> 
+> # Some meta-information that will be used by the export function:
+> databaseId <- "JH_CROWN"
+> databaseName <- "COVID_OMOP"
+> databaseDescription <- "20210208"
+> # For Oracle: define a schema that can be used to emulate temp tables:
+> oracleTempSchema <- NULL
+> 
+> execute(connectionDetails = connectionDetails,
++         cdmDatabaseSchema = cdmDatabaseSchema,
++         cohortDatabaseSchema = cohortDatabaseSchema,
++         cohortTable = cohortTable,
++         oracleTempSchema = oracleTempSchema,
++         outputFolder = outputFolder,
++         databaseId = databaseId,
++         databaseName = databaseName,
++         databaseDescription = databaseDescription,
++         createCohorts = TRUE,
++         synthesizePositiveControls = FALSE,
++         runAnalyses = TRUE,
++         runDiagnostics = TRUE,
++         packageResults = TRUE,
++         maxCores = maxCores)
+Creating exposure and outcome cohorts
+Connecting using SQL Server driver
+Error: Error executing SQL:
+com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "dbo" either does not exist or you do not have permission to use it.
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
+> 
+> resultsZipFile <- file.path(outputFolder, "export", paste0("Results", databaseId, ".zip"))
+> dataFolder <- file.path(outputFolder, "shinyData")
+> 
+> prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder)
+Warning: error 1 in extracting from zip file
+Error in prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder) : 
+  Cannot find file database.csv in zip file
+> 
+> launchEvidenceExplorer(dataFolder = dataFolder, blind = TRUE, launch.browser = FALSE)
+Loading required package: shiny
+Error in unique(cohortMethodResult[, c("targetId", "comparatorId", "outcomeId")]) : 
+  object 'cohortMethodResult' not found
+> library(Covid19IncidenceRasInhibitors)
+> 
+> # Maximum number of cores to be used:
+> maxCores <- parallel::detectCores()
+> 
+> # The folder where the study intermediate and result files will be written:
+> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
+> 
+> #load libraries
+> library(AzureKeyVault)
+> 
+> 
+> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
+Loading cached token
+> secretuser <- vault$secrets$get("ohdsi-shared")
+> secretpass <- vault$secrets$get("ohdsi-password")
+> 
+> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
+> 
+> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
+> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
+> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
+> cohortDatabaseSchema <- "dbo"
+> cohortTable <- "Covid19IncidenceRasinhibitors0208"
+> 
+> # Some meta-information that will be used by the export function:
+> databaseId <- "JH_CROWN"
+> databaseName <- "COVID_OMOP"
+> databaseDescription <- "20210208"
+> # For Oracle: define a schema that can be used to emulate temp tables:
+> oracleTempSchema <- NULL
+> 
+> execute(connectionDetails = connectionDetails,
++         cdmDatabaseSchema = cdmDatabaseSchema,
++         cohortDatabaseSchema = cohortDatabaseSchema,
++         cohortTable = cohortTable,
++         oracleTempSchema = oracleTempSchema,
++         outputFolder = outputFolder,
++         databaseId = databaseId,
++         databaseName = databaseName,
++         databaseDescription = databaseDescription,
++         createCohorts = TRUE,
++         synthesizePositiveControls = FALSE,
++         runAnalyses = TRUE,
++         runDiagnostics = TRUE,
++         packageResults = TRUE,
++         maxCores = maxCores)
+Creating exposure and outcome cohorts
+Connecting using SQL Server driver
+Error: Error executing SQL:
+com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "dbo" either does not exist or you do not have permission to use it.
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
+An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
+> library(Covid19IncidenceRasInhibitors)
+> 
+> # Maximum number of cores to be used:
+> maxCores <- parallel::detectCores()
+> 
+> # The folder where the study intermediate and result files will be written:
+> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
+> 
+> #load libraries
+> library(AzureKeyVault)
+> 
+> 
+> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
+Loading cached token
+> secretuser <- vault$secrets$get("ohdsi-shared")
+> secretpass <- vault$secrets$get("ohdsi-password")
+> 
+> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
+> 
+> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
+> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
+> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
+> 
+> 
+> 
+> # The name of the database schema and table where the study-specific cohorts will be instantiated:
+> cohortDatabaseSchema <- "results"
+> cohortTable <- "Covid19IncidenceRasinhibitors0208"
+> 
+> # Some meta-information that will be used by the export function:
+> databaseId <- "JH_CROWN"
+> databaseName <- "COVID_OMOP"
+> databaseDescription <- "20210208"
+> # For Oracle: define a schema that can be used to emulate temp tables:
+> oracleTempSchema <- NULL
+> 
+> execute(connectionDetails = connectionDetails,
++         cdmDatabaseSchema = cdmDatabaseSchema,
++         cohortDatabaseSchema = cohortDatabaseSchema,
++         cohortTable = cohortTable,
++         oracleTempSchema = oracleTempSchema,
++         outputFolder = outputFolder,
++         databaseId = databaseId,
++         databaseName = databaseName,
++         databaseDescription = databaseDescription,
++         createCohorts = TRUE,
++         synthesizePositiveControls = FALSE,
++         runAnalyses = TRUE,
++         runDiagnostics = TRUE,
++         packageResults = TRUE,
++         maxCores = maxCores)
+Creating exposure and outcome cohorts
+Connecting using SQL Server driver
+Creating cohort: COVID_ACE_ID32
+  |=============================================================================================================| 100%
+Executing SQL took 6.81 secs
+Creating cohort: COVID_ACE_ID36
+  |=============================================================================================================| 100%
+Executing SQL took 2.15 secs
+Creating cohort: COVID_ID25
+  |=============================================================================================================| 100%
+Executing SQL took 2.78 secs
+Creating cohort: COVID_ID4
+  |=============================================================================================================| 100%
+Executing SQL took 5.44 mins
+Creating cohort: COVID_ID30
+  |=============================================================================================================| 100%
+Executing SQL took 6.98 secs
+Creating cohort: COVID_ID26
+  |=============================================================================================================| 100%
+Executing SQL took 3.95 secs
+Creating cohort: LEGEND_HTN_Total_cardiovascular_disease_events
+  |=============================================================================================================| 100%
+Executing SQL took 6.79 secs
+Creating cohort: COVID_ACE_ID39
+  |=============================================================================================================| 100%
+Executing SQL took 3.82 secs
+Creating cohort: COVID_ACE_ID38
+  |=============================================================================================================| 100%
+Executing SQL took 2.96 secs
+Creating cohort: COVID_ACE_ID33
+  |=============================================================================================================| 100%
+Executing SQL took 3.03 secs
+Creating cohort: COVID_ACE_ID31
+  |=============================================================================================================| 100%
+Executing SQL took 5.28 secs
+Creating cohort: COVID_ACE_ID35
+  |=============================================================================================================| 100%
+Executing SQL took 4.79 secs
+Creating cohort: COVID_ACE_ID40
+  |=============================================================================================================| 100%
+Executing SQL took 4.38 secs
+Creating cohort: COVID_ACE_ID37
+  |=============================================================================================================| 100%
+Executing SQL took 4.35 secs
+Creating cohort: COVID_ACE_ID34
+  |=============================================================================================================| 100%
+Executing SQL took 4.05 secs
+Creating cohort: COVID_ACE_ID65
+  |=============================================================================================================| 100%
+Executing SQL took 4.2 secs
+Creating cohort: COVID_ACE_ID66
+  |=============================================================================================================| 100%
+Executing SQL took 2.44 secs
+Creating negative control outcome cohorts
+  |=============================================================================================================| 100%
+Executing SQL took 1.08 secs
+Counting cohorts
+Running CohortMethod analyses
+*** Creating cohortMethodData objects ***
+  |=============================================================================================================| 100%
+*** Creating study populations ***
+  |=============================================================================================================| 100%
+*** Fitting shared propensity score models ***
+  |=============================================================================================================| 100%
+*** Adding propensity scores to study population objects ***
+  |=============================================================================================================| 100%
+*** Trimming/Matching/Stratifying ***
+  |=============================================================================================================| 100%
+*** Prefiltering covariates for outcome models ***
+Loading required package: CohortMethod
+Loading required package: Cyclops
+Loading required package: FeatureExtraction
+Loading required package: Andromeda
+Loading required package: dplyr
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘CohortMethod’
+
+The following objects are masked _by_ ‘.GlobalEnv’:
+
+    drawAttritionDiagram, plotCovariateBalanceScatterPlot, plotKaplanMeier, plotPs
+
+Warning: warning: Low disk space in '/tmp/RtmpnjBcp6'. Only 1.7 GB left.
+Use options(warnDiskSpaceThreshold = <n>) to set the number of bytes for this warning to trigger.
+This warning will not be shown for this file location again during this R session.
+
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+Disconnected Andromeda. This data object can no longer be used
+To use this CohortMethodData object, you will have to load it from file (using loadCohortMethodData).
+*** Fitting outcome models for outcomes of interest ***
+  |=============================================================================================================| 100%
+*** Fitting outcome models for other outcomes ***
+  |=============================================================================================================| 100%
+Summarizing results
+  |=============================================================================================================| 100%
+Computing covariate balance
+  |=============================================================================================================| 100%
+Extract log-likelihood profiles
+  |=============================================================================================================| 100%
+Running diagnostics
+  |=============================================================================================================| 100%Thread 4 returns error: "X11 is not available" when using argument(s): list(analysisId = c(6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6), outcomeId = c(110, 122, 123, 133655, 134438, 134461, 136368, 137951, 139099, 139, 140480, 140641, n140648, 140842, 141932, 192606, 194083, 195873, 196168, 196236, 196456, 199192, 200775, 201606, 253954, 254443, 259995, 260134, 36713918, 373478, 374375, 374923, 376707, 377572, 378424, 378427, 380038, 380688, 380706, 381581, 4012570, 4012934, 4030042, 4038835, 40480893, 40481632, 4050747, 4083487, 4087647, 4088290, 4091513, 4092879, 4092896, 4103640, 4103703, 4110709, 4112731, 4115367, 4115402, 4134455, 4156115, 4166231, 4169984, 4170770, 4201390, 4201717, 4202045, 4209423, 4213540, 4215978, 4231770, n4234533, 4248870, 4249170, 4254542, 4291005, 432303, 432593, 432595, 433111, 433527, 433577, 434165, 434203, 434327, 4344500, 4345472, 434926, 436409, 436634, 437082, 437264, 438130, 438329, 438531, 438688, 439790, 440193, 440329, 440638, 441589, 441788, 441818, 443172, 443285, 443767, 444132, 44783954, 45757370, 46269889, 46286594, 72748, 73008, 73241, 73560, 74855, 75354, 75576, 75911, 76786, 77650, 77965, 78619, 81151, 81378, 81634, 81893, 91), comparatorId = c(148, 148, 148, 148, 148, 148, 148, n148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, n148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148), targetId = c(147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, n147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147, 147), analysisDescription = c(6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, n6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6), outcomeName = c(48, 46, 45, 20, 31, 129, 103, 9, 84, 47, 82, 135, 105, 25, 121, 108, 134, 94, 87, 122, 66, 3, 57, 49, 116, 123, 64, 50, 124, 112, 81, 18, 11, 101, 17, 128, 136, 78, 118, 24, 74, 76, 132, 75, 102, 67, 65, 96, 117, 4, 109, 5, 63, 12, 98, 19, 110, 140, 52, 99, 97, 68, 120, 61, 29, 80, 111, 100, 23, 104, 72, 131, 138, 60, 79, 137, n28, 89, 13, 55, 58, 70, 1, 90, 22, 83, 62, 86, 2, 6, 15, 130, 106, 91, 26, 119, 114, 139, 73, 95, 56, 77, 71, 125, 93, 53, 85, 7, 54, 30, 113, 127, 59, 14, 21, 69, 107, 88, 8, 51, 16, 10, 32, 126, 27, 115, 133, 92), comparatorName = c(43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, n43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43), targetName = c(36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, n36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36), includedCovariateConceptIds = c("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", n"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""), excludedCovariateConceptIds = c("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", n"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""), outcomeOfInterest = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, nFALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, nFALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE), cohortMethodDataFile = c("CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", n"CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", n"CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", "CmData_l2_t147_c148.zip", n"CmData_l2_t147_c148.zip", "CThread 4 returns error: "X11 is not available" when using argument(s): list(analysisId = c(5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5), outcomeId = c(110, 122, 123, 133655, 134438, 134461, 136368, 137951, 139099, 139, 140480, 140641, n140648, 140842, 141932, 192606, 194083, 195873, 196168, 196236, 196456, 199192, 200775, 201606, 253954, 254443, 259995, 260134, 36713918, 373478, 374375, 374923, 376707, 377572, 378424, 378427, 380038, 380688, 380706, 381581, 4012570, 4012934, 4030042, 4038835, 40480893, 40481632, 4050747, 4083487, 4087647, 4088290, 4091513, 4092879, 4092896, 4103640, 4103703, 4110709, 4112731, 4115367, 4115402, 4134455, 4156115, 4166231, 4169984, 4170770, 4201390, 4201717, 4202045, 4209423, 4213540, 4215978, 4231770, n4234533, 4248870, 4249170, 4254542, 4291005, 432303, 432593, 432595, 433111, 433527, 433577, 434165, 434203, 434327, 4344500, 4345472, 434926, 436409, 436634, 437082, 437264, 438130, 438329, 438531, 438688, 439790, 440193, 440329, 440638, 441589, 441788, 441818, 443172, 443285, 443767, 444132, 44783954, 45757370, 46269889, 46286594, 72748, 73008, 73241, 73560, 74855, 75354, 75576, 75911, 76786, 77650, 77965, 78619, 81151, 81378, 81634, 81893, 91), comparatorId = c(148, 148, 148, 148, 148, 148, 148, n148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, n148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148, 148), targetId = c(143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, n143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143, 143), analysisDescription = c(5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, n5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5), outcomeName = c(48, 46, 45, 20, 31, 129, 103, 9, 84, 47, 82, 135, 105, 25, 121, 108, 134, 94, 87, 122, 66, 3, 57, 49, 116, 123, 64, 50, 124, 112, 81, 18, 11, 101, 17, 128, 136, 78, 118, 24, 74, 76, 132, 75, 102, 67, 65, 96, 117, 4, 109, 5, 63, 12, 98, 19, 110, 140, 52, 99, 97, 68, 120, 61, 29, 80, 111, 100, 23, 104, 72, 131, 138, 60, 79, 137, n28, 89, 13, 55, 58, 70, 1, 90, 22, 83, 62, 86, 2, 6, 15, 130, 106, 91, 26, 119, 114, 139, 73, 95, 56, 77, 71, 125, 93, 53, 85, 7, 54, 30, 113, 127, 59, 14, 21, 69, 107, 88, 8, 51, 16, 10, 32, 126, 27, 115, 133, 92), comparatorName = c(43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, n43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43), targetName = c(33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, n33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33), includedCovariateConceptIds = c("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", n"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""), excludedCovariateConceptIds = c("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", n"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""), outcomeOfInterest = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, nFALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, nFALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE), cohortMethodDataFile = c("CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", n"CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", n"CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", "CmData_l2_t143_c148.zip", n"CmData_l2_t143_c148.zip", "C
+Error in ParallelLogger::clusterApply(cluster = cluster, x = subsets,  : 
+  Error(s) when calling function 'fun', see earlier messages for details
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 6, height = 4.5, dpi = 400)
+1: Diagnostics.R#82: EmpiricalCalibration::plotCalibrationEffect(logRrNegative
+
+
+Thread:  3
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-09 06:51:43
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 6, height = 4.5, dpi = 400)
+1: Diagnostics.R#82: EmpiricalCalibration::plotCalibrationEffect(logRrNegative
+
+
+Thread: Main
+Message:  Error in ParallelLogger::clusterApply(cluster = cluster, x = subsets,  :    Error(s) when calling function 'fun', see earlier messages for details 
+Level:  FATAL
+Time:  2021-02-09 06:52:38
+
+Stack trace:
+4: stop(message)
+3: Diagnostics.R#48: ParallelLogger::clusterApply(cluster = cluster, x = subsets, fun = createDiagnosticsForSubset, a
+2: Main.R#138: generateDiagnostics(outputFolder = outputFolder, makePlots = makePlots, maxCores = maxCores)
+1: execute(connectionDetails = connectionDetails, cdmDatabaseSchema = cdmDatabaseSchema, cohortDatabaseSchema = cohor
+
+R version:
+R version 3.6.3 (2020-02-29)
+
+Platform:
+x86_64-pc-linux-gnu
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- CohortMethod (4.0.1)
+- FeatureExtraction (3.1.0)
+- Andromeda (0.4.0)
+- dplyr (1.0.4)
+- Cyclops (3.1.0)
+- shiny (1.5.0)
+- AzureKeyVault (1.0.4.9000)
+- Covid19IncidenceRasInhibitors (2.1.0)
+- DatabaseConnector (3.0.0)
+
+
