@@ -57,226 +57,6 @@ Type 'q()' to quit R.
 
 Restarting R session...
 
-> library(Covid19IncidenceRasInhibitors)
-Loading required package: DatabaseConnector
-> getwd()
-[1] "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
-> library(Covid19IncidenceRasInhibitors)
-> 
-> # Maximum number of cores to be used:
-> maxCores <- parallel::detectCores()
-> 
-> # The folder where the study intermediate and result files will be written:
-> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
-> 
-> #load libraries
-> library(AzureKeyVault)
-> 
-> 
-> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
-Loading cached token
-> secretuser <- vault$secrets$get("ohdsi-shared")
-> secretpass <- vault$secrets$get("ohdsi-password")
-> 
-> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
-> 
-> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
-> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
-> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
-> 
-> 
-> 
-> # The name of the database schema and table where the study-specific cohorts will be instantiated:
-> cohortDatabaseSchema <- "cbo"
-> cohortTable <- "Covid19IncidenceRasinhibitors0208"
-> 
-> # Some meta-information that will be used by the export function:
-> databaseId <- "JH_CROWN"
-> databaseName <- "COVID_OMOP"
-> databaseDescription <- "20210208"
-> # For Oracle: define a schema that can be used to emulate temp tables:
-> oracleTempSchema <- NULL
-> 
-> execute(connectionDetails = connectionDetails,
-+         cdmDatabaseSchema = cdmDatabaseSchema,
-+         cohortDatabaseSchema = cohortDatabaseSchema,
-+         cohortTable = cohortTable,
-+         oracleTempSchema = oracleTempSchema,
-+         outputFolder = outputFolder,
-+         databaseId = databaseId,
-+         databaseName = databaseName,
-+         databaseDescription = databaseDescription,
-+         createCohorts = TRUE,
-+         synthesizePositiveControls = FALSE,
-+         runAnalyses = TRUE,
-+         runDiagnostics = TRUE,
-+         packageResults = TRUE,
-+         maxCores = maxCores)
-Creating exposure and outcome cohorts
-Connecting using SQL Server driver
-Error: Error executing SQL:
-com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "cbo" either does not exist or you do not have permission to use it.
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
-> library(Covid19IncidenceRasInhibitors)
-> 
-> # Maximum number of cores to be used:
-> maxCores <- parallel::detectCores()
-> 
-> # The folder where the study intermediate and result files will be written:
-> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
-> 
-> #load libraries
-> library(AzureKeyVault)
-> 
-> 
-> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
-Loading cached token
-> secretuser <- vault$secrets$get("ohdsi-shared")
-> secretpass <- vault$secrets$get("ohdsi-password")
-> 
-> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
-> 
-> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
-> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
-> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
-> 
-> 
-> 
-> # The name of the database schema and table where the study-specific cohorts will be instantiated:
-> cohortDatabaseSchema <- "dbo"
-> cohortTable <- "Covid19IncidenceRasinhibitors0208"
-> 
-> # Some meta-information that will be used by the export function:
-> databaseId <- "JH_CROWN"
-> databaseName <- "COVID_OMOP"
-> databaseDescription <- "20210208"
-> # For Oracle: define a schema that can be used to emulate temp tables:
-> oracleTempSchema <- NULL
-> 
-> execute(connectionDetails = connectionDetails,
-+         cdmDatabaseSchema = cdmDatabaseSchema,
-+         cohortDatabaseSchema = cohortDatabaseSchema,
-+         cohortTable = cohortTable,
-+         oracleTempSchema = oracleTempSchema,
-+         outputFolder = outputFolder,
-+         databaseId = databaseId,
-+         databaseName = databaseName,
-+         databaseDescription = databaseDescription,
-+         createCohorts = TRUE,
-+         synthesizePositiveControls = FALSE,
-+         runAnalyses = TRUE,
-+         runDiagnostics = TRUE,
-+         packageResults = TRUE,
-+         maxCores = maxCores)
-Creating exposure and outcome cohorts
-Connecting using SQL Server driver
-Error: Error executing SQL:
-com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "dbo" either does not exist or you do not have permission to use it.
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
-> 
-> resultsZipFile <- file.path(outputFolder, "export", paste0("Results", databaseId, ".zip"))
-> dataFolder <- file.path(outputFolder, "shinyData")
-> 
-> prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder)
-Warning: error 1 in extracting from zip file
-Error in prepareForEvidenceExplorer(resultsZipFile = resultsZipFile, dataFolder = dataFolder) : 
-  Cannot find file database.csv in zip file
-> 
-> launchEvidenceExplorer(dataFolder = dataFolder, blind = TRUE, launch.browser = FALSE)
-Loading required package: shiny
-Error in unique(cohortMethodResult[, c("targetId", "comparatorId", "outcomeId")]) : 
-  object 'cohortMethodResult' not found
-> library(Covid19IncidenceRasInhibitors)
-> 
-> # Maximum number of cores to be used:
-> maxCores <- parallel::detectCores()
-> 
-> # The folder where the study intermediate and result files will be written:
-> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
-> 
-> #load libraries
-> library(AzureKeyVault)
-> 
-> 
-> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
-Loading cached token
-> secretuser <- vault$secrets$get("ohdsi-shared")
-> secretpass <- vault$secrets$get("ohdsi-password")
-> 
-> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
-> 
-> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
-> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
-> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
-> cohortDatabaseSchema <- "dbo"
-> cohortTable <- "Covid19IncidenceRasinhibitors0208"
-> 
-> # Some meta-information that will be used by the export function:
-> databaseId <- "JH_CROWN"
-> databaseName <- "COVID_OMOP"
-> databaseDescription <- "20210208"
-> # For Oracle: define a schema that can be used to emulate temp tables:
-> oracleTempSchema <- NULL
-> 
-> execute(connectionDetails = connectionDetails,
-+         cdmDatabaseSchema = cdmDatabaseSchema,
-+         cohortDatabaseSchema = cohortDatabaseSchema,
-+         cohortTable = cohortTable,
-+         oracleTempSchema = oracleTempSchema,
-+         outputFolder = outputFolder,
-+         databaseId = databaseId,
-+         databaseName = databaseName,
-+         databaseDescription = databaseDescription,
-+         createCohorts = TRUE,
-+         synthesizePositiveControls = FALSE,
-+         runAnalyses = TRUE,
-+         runDiagnostics = TRUE,
-+         packageResults = TRUE,
-+         maxCores = maxCores)
-Creating exposure and outcome cohorts
-Connecting using SQL Server driver
-Error: Error executing SQL:
-com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "dbo" either does not exist or you do not have permission to use it.
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportSql.txt
-An error report has been created at  /home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors/errorReportR.txt
-> library(Covid19IncidenceRasInhibitors)
-> 
-> # Maximum number of cores to be used:
-> maxCores <- parallel::detectCores()
-> 
-> # The folder where the study intermediate and result files will be written:
-> outputFolder <- "/home/idies/workspace/Storage/cli114/persistent/Studies/CovidPrediction_OHDSI/Covid19Icarius/Covid19IncidenceRasInhibitors"
-> 
-> #load libraries
-> library(AzureKeyVault)
-> 
-> 
-> vault <- key_vault("https://pm-ohdsi-kv.vault.azure.net", auth_type="device_code") # visit the microsoft.com link and type in your code to authenticate
-Loading cached token
-> secretuser <- vault$secrets$get("ohdsi-shared")
-> secretpass <- vault$secrets$get("ohdsi-password")
-> 
-> connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", user = "ohdsi_dqd", password = secretpass$value, server = "esmpmdbpr4.win.ad.jhu.edu", extraSettings = "database=COVID_OMOP")
-> 
-> cdmDatabaseSchema <- "dbo" # the fully qualified database schema name of the CDM
-> resultsDatabaseSchema <- "results" # the fully qualified database schema name of the results schema (that you can write to)
-> cdmSourceName <- "COVID_OMOP" # a human readable name for your CDM source
-> 
-> 
-> 
-> # The name of the database schema and table where the study-specific cohorts will be instantiated:
-> cohortDatabaseSchema <- "results"
-> cohortTable <- "Covid19IncidenceRasinhibitors0208"
-> 
-> # Some meta-information that will be used by the export function:
-> databaseId <- "JH_CROWN"
-> databaseName <- "COVID_OMOP"
-> databaseDescription <- "20210208"
-> # For Oracle: define a schema that can be used to emulate temp tables:
-> oracleTempSchema <- NULL
-> 
 > execute(connectionDetails = connectionDetails,
 +         cdmDatabaseSchema = cdmDatabaseSchema,
 +         cohortDatabaseSchema = cohortDatabaseSchema,
@@ -504,5 +284,106 @@ Other attached packages:
 - AzureKeyVault (1.0.4.9000)
 - Covid19IncidenceRasInhibitors (2.1.0)
 - DatabaseConnector (3.0.0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------
+Thread:  2
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-10 18:36:36
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 4, height = 4, dpi = 400)
+1: Diagnostics.R#185: CohortMethod::plotCovariateBalanceScatterPlot(balance = 
+
+
+Thread:  4
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-10 18:36:36
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 4, height = 4, dpi = 400)
+1: Diagnostics.R#185: CohortMethod::plotCovariateBalanceScatterPlot(balance = 
+
+
+Thread:  3
+Message:  X11 is not available
+Level:  FATAL
+Time:  2021-02-10 18:36:36
+
+Stack trace:
+5: .handleSimpleError(function (e) 
+{
+    ParallelLogger::logFatal(conditionMe
+4: grDevices::png(..., res = dpi, units = "in")
+3: dev(filename = filename, width = dim[1], height = dim[2], ...)
+2: ggplot2::ggsave(fileName, plot, width = 4, height = 4, dpi = 400)
+1: Diagnostics.R#185: CohortMethod::plotCovariateBalanceScatterPlot(balance = 
+
+
+Thread: Main
+Message:  Error in ParallelLogger::clusterApply(cluster = cluster, x = subsets,  :    Error(s) when calling function 'fun', see earlier messages for details 
+Level:  FATAL
+Time:  2021-02-10 18:37:14
+
+Stack trace:
+4: stop(message)
+3: Diagnostics.R#48: ParallelLogger::clusterApply(cluster = cluster, x = subsets, fun = createDiagnosticsForSubset, a
+2: Main.R#138: generateDiagnostics(outputFolder = outputFolder, makePlots = makePlots, maxCores = maxCores)
+1: execute(connectionDetails = connectionDetails, cdmDatabaseSchema = cdmDatabaseSchema, cohortDatabaseSchema = cohor
+
+R version:
+R version 3.6.3 (2020-02-29)
+
+Platform:
+x86_64-pc-linux-gnu
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- AzureKeyVault (1.0.4.9000)
+- Covid19ComplicationsRasInhibitors (0.2.0)
+- DatabaseConnector (3.0.0)
+
 
 
